@@ -27,8 +27,12 @@ class AddItemController: UIViewController {
     }
     
     @IBAction func saveButtonPressed(sender: AnyObject) {
-        delegate?.addItemToList(addItemTextField.text!)
-        self.dismissViewControllerAnimated(true, completion: nil)
+        if addItemTextField.text!.isEmpty || addItemTextField.text!.characters.first == " " {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        } else {
+            delegate?.addItemToList(addItemTextField.text!)
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
 
 }

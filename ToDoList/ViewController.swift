@@ -24,7 +24,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     override func viewWillAppear(animated: Bool) {
-        removeToDoItems() // Removes the selected items before reloading the tableView
         resetAccessoryTypes()
         tableView.reloadData()
     }
@@ -96,6 +95,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         addCompletedItems() // Adds selected items to completedList before the user navigates away
+        removeToDoItems() // Removes the selected items after it's added to completedList
         
         if(segue.identifier == "AddItemSegue") {
             let navigationController = segue.destinationViewController as! UINavigationController
