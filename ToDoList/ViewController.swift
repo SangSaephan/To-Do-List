@@ -52,6 +52,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     /*
+    Allows swipe-to-delete gesture
+    */
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            toDoList.removeObjectAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        }
+    }
+    
+    /*
     Iterates through the toDoList, if the item's cell has a checkmark,
     add it to completedList
     */
